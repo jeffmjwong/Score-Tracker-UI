@@ -29,10 +29,10 @@ class App extends Component {
     ]
   };
 
-  incrementScore = (playerId) => {
+  handleScoreChange = (playerId, delta) => {
     this.setState((prevState) => {
       const updatedPlayers = [...prevState.players].map((player) => {
-        if (player.id === playerId) player.score++;
+        if (player.id === playerId) player.score += delta;
         return player;
       });
 
@@ -67,7 +67,7 @@ class App extends Component {
               key={player.id.toString()}
               score={player.score}
               removePlayer={this.handleRemovePlayer}
-              incrementScore={this.incrementScore}
+              changeScore={this.handleScoreChange}
             />
           )
         }

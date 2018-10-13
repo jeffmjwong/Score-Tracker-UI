@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-  state = {
-    score: 0
-  };
-
   incrementScore = () => {
     this.setState( prevState => ({
       score: prevState.score + 1
@@ -18,11 +14,13 @@ class Counter extends Component {
   }
 
   render() {
+    const { score } = this.props;
+
     return (
       <div className="counter">
-        <button className="counter-action decrement" onClick={this.decrementScore}> - </button>
-        <span className="counter-score">{ this.state.score }</span>
-        <button className="counter-action increment" onClick={this.incrementScore}> + </button>
+        <button className="counter-action decrement"> - </button>
+        <span className="counter-score">{ score }</span>
+        <button className="counter-action increment"> + </button>
       </div>
     );
   }

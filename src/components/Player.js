@@ -3,6 +3,8 @@ import React from 'react';
 import Counter from './Counter';
 
 const Player = (props) => {
+  const { score } = props;
+
   return (
     <div className="player">
       <span className="player-name">
@@ -10,7 +12,7 @@ const Player = (props) => {
         { props.name }
       </span>
 
-      <Counter />
+      <Counter score={score} />
     </div>
   );
 }

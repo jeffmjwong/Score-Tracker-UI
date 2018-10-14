@@ -51,16 +51,19 @@ class App extends Component {
   }
 
   render() {
+    const { players } = this.state;
+
     return (
       <div className="scoreboard">
         <Header
           title="Scoreboard"
-          totalPlayers={this.state.players.length}
+          totalPlayers={players.length}
+          players={players}
         />
 
         {/* Players list */}
         {
-          this.state.players.map((player, index) =>
+          players.map((player, index) =>
             <Player
               name={player.name}
               id={player.id}

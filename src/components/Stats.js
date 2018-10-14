@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Stats = (props) => {
-  const { totalPlayers, players } = props;
+  const { players } = props;
 
   return (
     <table className="stats">
       <tbody>
         <tr>
           <td>Players:</td>
-          <td>{ totalPlayers }</td>
+          <td>{ players.length }</td>
         </tr>
         <tr>
           <td>Total Points:</td>

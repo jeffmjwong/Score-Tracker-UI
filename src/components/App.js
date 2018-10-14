@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Header from './Header';
 import Player from './Player';
+import AddPlayerForm from './AddPlayerForm';
 
 class App extends Component {
   state = {
@@ -74,6 +75,8 @@ class App extends Component {
             />
           )
         }
+
+        <AddPlayerForm />
       </div>
     );
   }

@@ -51,6 +51,14 @@ class App extends Component {
     });
   }
 
+  handleAddPlayer = (name) => {
+    const newPlayer = { name, id: new Date().getTime(), score: 0 };
+
+    this.setState((prevState) => ({
+      players: [...prevState.players, newPlayer]
+    }));
+  }
+
   render() {
     const { players } = this.state;
 
@@ -76,7 +84,7 @@ class App extends Component {
           )
         }
 
-        <AddPlayerForm />
+        <AddPlayerForm addPlayer={this.handleAddPlayer} />
       </div>
     );
   }

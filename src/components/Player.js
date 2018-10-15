@@ -5,7 +5,6 @@ import Counter from './Counter';
 class Player extends PureComponent {
   render() {
     const { id, index, name, score } = this.props;
-    console.log(name);
 
     return (
       <div className="player">

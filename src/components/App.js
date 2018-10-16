@@ -10,25 +10,49 @@ class App extends Component {
       {
         name: "Guil",
         id: 1,
-        score: 0
+        score: 0,
+        isHighestScore: false
       },
       {
         name: "Treasure",
         id: 2,
-        score: 0
+        score: 0,
+        isHighestScore: false
       },
       {
         name: "Ashley",
         id: 3,
-        score: 0
+        score: 0,
+        isHighestScore: false
       },
       {
         name: "James",
         id: 4,
-        score: 0
+        score: 0,
+        isHighestScore: false
       }
     ]
   };
+
+  checkHighScore = () => {
+    const { players } = this.state;
+
+    const highestScore = players.reduce((total, player) => {
+      return player.score > total ? player.score : total;
+    }, 0);
+
+    const updatedPlayers = players.map((player) => {
+      const updatedPlayer = {...player};
+      if (player.score >= highestScore) {
+        updatedPlayer.isHighestScore = true;
+      } else {
+        updatedPlayer.isHighestScore = false;
+      }
+      return updatedPlayer;
+    });
+
+    this.setState({ players: updatedPlayers });
+  }
 
   handleScoreChange = (index, delta) => {
     this.setState((prevState) => {
@@ -40,7 +64,7 @@ class App extends Component {
       return {
         players: updatedPlayers
       };
-    });
+    }, () => this.checkHighScore());
   }
 
   handleRemovePlayer = (id) => {
@@ -48,7 +72,7 @@ class App extends Component {
       return {
         players: prevState.players.filter(p => p.id !== id)
       };
-    });
+    }, () => this.checkHighScore());
   }
 
   handleAddPlayer = (name) => {
@@ -75,6 +99,7 @@ class App extends Component {
               key={player.id.toString()}
               score={player.score}
               index={index}
+              isHighestScore={player.isHighestScore}
               removePlayer={this.handleRemovePlayer}
               changeScore={this.handleScoreChange}
             />

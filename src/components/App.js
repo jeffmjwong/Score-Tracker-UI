@@ -64,10 +64,7 @@ class App extends Component {
 
     return (
       <div className="scoreboard">
-        <Header
-          title="Scoreboard"
-          players={players}
-        />
+        <Header players={players} />
 
         {/* Players list */}
         {
